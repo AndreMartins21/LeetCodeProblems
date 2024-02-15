@@ -20,21 +20,20 @@ class Solution:
                 return remaining + n
         return -1
 
+
 if __name__ == "__main__":
     solution = Solution()
 
-    dict_io_tests = {
-        "input": [
+    mock_unit_test(
+        inputs_tests= [
             [1,12,1,2,5,50,3],
             [5,5,5], 
             [5,5,50]
-        ]
-        ,
-        "output": [
+        ], 
+        outputs_expected= [
             12,
             15, 
-            -1       
-        ]
-    }
-
-    mock_unit_test(dict_io_tests, solution.largestPerimeter)
+            -1
+        ],
+        function=solution.largestPerimeter
+    )

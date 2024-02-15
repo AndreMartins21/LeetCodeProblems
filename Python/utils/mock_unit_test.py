@@ -1,6 +1,5 @@
-def mock_unit_test(dict_io_tests: dict[list[list[any]]], function) -> bool:
-    inputs_tests, outputs_expected = dict_io_tests.values()
-
+def mock_unit_test(inputs_tests: list[any], outputs_expected: list[any], function) -> bool:
+    
     assert len(inputs_tests) == len(outputs_expected), f"Tamanhos incompatíveis: \ninputs_tests ({len(inputs_tests)}) != outputs_expected ({len(outputs_expected)})"
 
     for i in range(len(inputs_tests)):
