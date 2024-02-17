@@ -4,8 +4,15 @@ from utils.mock_unit_test import mock_unit_test
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        return [0, 1]
+        hash_map: dict = {}
 
+        for idx, n in enumerate(nums):
+            difference: int = target - n
+            
+            if difference in hash_map.keys():
+                return [idx, hash_map.get(difference)]
+            hash_map[n] = idx
+        return []
 
 
 if __name__ == "__main__":
@@ -30,5 +37,6 @@ if __name__ == "__main__":
             [1, 2],
             [0, 1]
         ],
-        function=solution.twoSum
+        function=solution.twoSum,
+        order_list_output=True
     )
