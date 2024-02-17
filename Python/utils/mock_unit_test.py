@@ -1,4 +1,6 @@
-def mock_unit_test(dict_inputs_tests: dict[list[any]], outputs_expected: list[any], function) -> bool:
+def mock_unit_test(
+        dict_inputs_tests: dict[list[any]], outputs_expected: list[any], function, order_list_output: bool = False
+    ) -> bool:
     len_input: int = len(list(dict_inputs_tests.values())[0])
     len_dict: int = len(dict_inputs_tests)
 
@@ -7,15 +9,17 @@ def mock_unit_test(dict_inputs_tests: dict[list[any]], outputs_expected: list[an
     parameters: list[str] = list(dict_inputs_tests.keys())
     
     for i in range(len_input):
-        input_test_values = [list(dict_inputs_tests.values())[v][0] for v in range(len_dict)]
+        input_test_values = [list(dict_inputs_tests.values())[param][i] for param in range(len_dict)]
         input_test: dict = dict(zip(parameters, input_test_values))
-        output_expected = outputs_expected[i]
+        output_expected = sorted(outputs_expected[i]) if order_list_output else outputs_expected[i]
 
         output = function(**input_test)
-        assert output == output_expected, f"ERROR! Input: {input_test} \nOutput: {output} \nOutput_Expected: {output_expected}"
+        output = sorted(output) if order_list_output else output
+
+        assert output == output_expected, f"ERROR! \nInput: {input_test} \nOutput: {output} \nOutput_Expected: {output_expected}"
         print(f"{i+1}° teste: OK!")
-        
-    print(f"Todos os {len_dict} testes passaram com sucessso!")
+
+    print(f"Todos os {len_input} testes passaram com sucessso!")
     return True
 
 
