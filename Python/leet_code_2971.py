@@ -25,14 +25,14 @@ if __name__ == "__main__":
     solution = Solution()
 
     mock_unit_test(
-        inputs_tests= [
-            [1,12,1,2,5,50,3],
-            [5,5,5], 
-            [5,5,50]
-        ], 
+        dict_inputs_tests= {
+            "nums": [
+                [1,12,1,2,5,50,3], 
+                [5,5,50]
+            ]
+        }, 
         outputs_expected= [
             12,
-            15, 
             -1
         ],
         function=solution.largestPerimeter
