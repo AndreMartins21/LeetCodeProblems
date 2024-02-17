@@ -3,6 +3,7 @@ from utils.mock_unit_test import mock_unit_test
 
 
 class Solution:
+    # Link = https://leetcode.com/problems/two-sum/description/
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         hash_map: dict = {}
 
